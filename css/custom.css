@@ -1,0 +1,464 @@
+/**
+ * Custom styles for Mehran Ahmadlou's personal website
+ * Author: Mehran Ahmadlou
+ * Version: 1.0
+ */
+
+/* ------------------------------
+    0. Global Styles
+------------------------------ */
+@import url('colors.css'); /* Import the color palette */
+
+/* -----------------------------
+    1. Publication Styles
+------------------------------ */
+.item {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-holder {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--background);
+}
+
+.publication-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Publication badges */
+.pub-badges {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    opacity: 0.8;
+}
+
+.year-badge {
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: 0.4em;
+    font-weight: 500;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.journal-badge {
+    background-color: var(--secondary);
+    color: var(--text-light);
+    padding: 0.3em;
+    font-weight: 500;
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.journal-details {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 0.8rem;
+}
+
+/* Publication content */
+.publication-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    z-index: 2;
+    background: linear-gradient(
+        to top,
+        var(--primary-75) 0%,
+        var(--primary-50) 70%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.pub-title {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.pub-authors {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.pub-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.cite-icon {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+/* ------------------------------
+    2. Navigation & Layout
+------------------------------ */
+.portfolio-sec .work-navigation {
+    top: 60%;
+}
+
+.owl-nav {
+    display: none;
+}
+
+.heading {
+    display: inline;
+    background: var(--neutral-100, #fff);
+    opacity: 0.6;
+}
+
+/* ------------------------------
+    3. Social Icons
+------------------------------ */
+.social-icons span a svg {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.social-icons span a:hover svg {
+    filter: invert(0.8);
+    transition: filter 0.7s ease;
+}
+
+.side-menu-footer span a svg {
+    filter: invert(1);
+    transition: filter 0.7s ease;
+}
+
+.side-menu-footer span a:hover svg path {
+    fill: var(--accent);
+    transition: fill 0.7s ease;
+}
+
+.copywrite {
+    width: 40%;
+}
+
+.social-icons {
+    width: 60%;
+}
+
+.copywrite a svg {
+    width: 1.3em;
+    height: 1.3em;
+}
+
+/* ------------------------------
+    4. About Section
+------------------------------ */
+div .heading-area.about {
+    transform: translate(20%, 80%);
+}
+
+.about-me {
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+/* ------------------------------
+    5. Contact Form
+------------------------------ */
+#result {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.alert-success {
+    background-color: var(--success-25, rgba(42, 157, 143, 0.1));
+    border: 1px solid var(--success);
+    color: var(--success);
+}
+
+.alert-danger {
+    background-color: var(--error-25, rgba(231, 111, 81, 0.1));
+    border: 1px solid var(--error);
+    color: var(--error);
+}
+
+.contact_btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.contact-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact-link:hover {
+    color: var(--secondary);
+}
+
+.contact-link i {
+    margin-right: 10px;
+}
+
+/* ------------------------------
+    6. Toast Notifications
+------------------------------ */
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: var(--text-light);
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-success {
+    background-color: var(--success);
+}
+
+.toast-error {
+    background-color: var(--error);
+}
+
+.toast-info {
+    background-color: var(--info);
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+}
+
+.toast-message {
+    flex: 1;
+    font-size: 14px;
+}
+
+
+/* ------------------------------
+    7. Override core theme styles using the color palette
+------------------------------ */
+.heading{
+    color: var(--primary);
+}
+
+.text{
+    color: var(--text-dark);
+}
+
+/* Button styles */
+.btn-main{
+    color: var(--primary);
+    border: solid 1px var(--primary);
+}
+
+.btn-main:hover {
+    color: var(--text-light);
+    background-color: var(--primary);
+}
+
+.btn-main-inverse{
+    color: var(--text-light);
+    background-color: var(--primary);
+    border: solid 1px var(--primary);
+}
+
+.btn-main-inverse:hover {
+    color: var(--text-light);
+    background-color: var(--secondary);
+    border: solid 1px var(--secondary);
+}
+
+/* Overlay styles */
+.white-overlay{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.black-overlay{
+    background-color: var(--primary-50);
+}
+
+/* Text animation gradients */
+.anim-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--secondary)), color-stop(50%, var(--secondary)), color-stop(50%, var(--primary)));
+    background-image: linear-gradient(to right, var(--secondary), var(--secondary) 50%, var(--primary) 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+}
+
+.anim-text-white {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--secondary)), color-stop(50%, var(--secondary)), color-stop(50%, var(--text-light)));
+    background-image: linear-gradient(to right, var(--secondary), var(--secondary) 50%, var(--text-light) 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+}
+
+/* ===================================
+        Preloader
+====================================== */
+.preloader {
+    background: var(--neutral-100);
+}
+
+.dot {
+    background-color: var(--secondary);
+}
+
+.dot-3, .dot-2, .dot-1 {
+    background-color: var(--secondary);
+}
+
+/* ===================================
+    menu-line
+====================================== */
+.menu-line {
+    color: var(--neutral-500);
+}
+
+/* Header and navigation */
+header .inner-header{
+    background-color: var(--neutral-100);
+}
+
+.sidemenu_btn span {
+    background: var(--primary);
+}
+
+/* Side menu */
+.side-menu {
+    background-color: var(--primary);
+}
+
+.side-menu .btn-close {
+    border: solid 1px var(--text-light);
+}
+
+.side-menu .btn-close::before, .side-menu .btn-close::after {
+    background: var(--text-light);
+}
+
+.side-menu-inner-content .copywrite, .side-menu-inner-content .social-icons a i{
+    color: var(--text-light);
+}
+
+.side-menu-inner-content .social-icons a:hover{
+    background-color: var(--accent);
+}
+
+.side-menu-inner-content .social-icons a:hover i{
+    color: var(--primary);
+}
+
+/* Navigation */
+.navbar-nav .nav-link{
+    color: var(--text-light);
+}
+
+.copywrite{
+    color: var(--text-dark);
+    opacity: .8;
+}
+
+.social-icons span a:hover{
+    background-color: var(--accent);
+}
+
+.social-icons span a:hover i{
+    color: var(--primary);
+}
+
+.social-icons span i{
+    color: var(--text-light);
+}
+
+/* Services section */
+.services-sec .services-boxes .service-card .icon-holder{
+    color: var(--primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--secondary)), color-stop(50%, var(--secondary)), color-stop(50%, var(--primary)));
+    background-image: linear-gradient(to right, var(--secondary), var(--secondary) 50%, var(--primary) 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+}
+
+/* Portfolio section */
+.portfolio-sec .work-navigation a{
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-gradient(linear, left top, right top, from(var(--secondary)), color-stop(50%, var(--secondary)), color-stop(50%, var(--primary)));
+    background-image: linear-gradient(to right, var(--secondary), var(--secondary) 50%, var(--primary) 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+}
+
+/* Contact section */
+.contact-sec .contact-inner{
+    border: solid 10px var(--neutral-300);
+}
+
+.contact-sec .contact-inner .contact-details ul li{
+    color: var(--text-dark);
+}
+
+.contact-sec .contact-inner .contact-details ul li i{
+    color: var(--primary);
+}
+
+.contact-sec .contact-form input,
+.contact-sec .contact-form textarea{
+    border-bottom: solid 1px var(--neutral-400);
+}
+
+/* Footer */
+.footer-style-1 .footer-social a {
+    color: var(--primary);
+}
+
+.footer-style-1 .footer-social li a:hover{
+    background-color: var(--secondary);
+    color: var(--text-light);
+}
+
+/* Form focus states */
+.form-control:focus{
+    border-color: var(--neutral-400) !important;
+    box-shadow: 0 0 0 0.2rem var(--secondary-25) !important;
+}

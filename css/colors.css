@@ -1,0 +1,39 @@
+:root {
+    /* Primary Colors */
+    --primary: #1A365D;      /* Deep Navy Blue - main brand color */
+    --secondary: #2A9D8F;    /* Teal - secondary color */
+    --accent: #E9C46A;       /* Muted Gold - accent color */
+    
+    /* Supporting Colors */
+    --background: #F8F9FA;   /* Light Gray - backgrounds */
+    --text-dark: #333333;    /* Dark Charcoal - main text */
+    --text-light: #F8F9FA;   /* Light Gray - text on dark backgrounds */
+    
+    /* Functional Colors */
+    --success: #2A9D8F;      /* Teal - success messages */
+    --error: #E76F51;        /* Terracotta - error messages */
+    --info: #457B9D;         /* Steel Blue - info messages */
+    --warning: #F4A261;      /* Sandy Brown - warning messages */
+    
+    /* Neutral Colors */
+    --neutral-100: #FFFFFF;  /* White */
+    --neutral-200: #F8F9FA;  /* Light Gray */
+    --neutral-300: #E9ECEF;  /* Lighter Gray */
+    --neutral-400: #DEE2E6;  /* Light Gray */
+    --neutral-500: #ADB5BD;  /* Medium Gray */
+    --neutral-600: #6C757D;  /* Dark Gray */
+    --neutral-700: #495057;  /* Darker Gray */
+    --neutral-800: #343A40;  /* Very Dark Gray */
+    --neutral-900: #212529;  /* Almost Black */
+    
+    /* Opacity Variants */
+    --primary-75: rgba(26, 54, 93, 0.75);
+    --primary-50: rgba(26, 54, 93, 0.5);
+    --primary-25: rgba(26, 54, 93, 0.25);
+    --secondary-75: rgba(42, 157, 143, 0.75);
+    --secondary-50: rgba(42, 157, 143, 0.5);
+    --secondary-25: rgba(42, 157, 143, 0.25);
+    --accent-75: rgba(233, 196, 106, 0.75);
+    --accent-50: rgba(233, 196, 106, 0.5);
+    --accent-25: rgba(233, 196, 106, 0.25);
+}
