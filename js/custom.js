@@ -413,50 +413,72 @@ function initContactForm() {
 // ======================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    const aboutSection = document.querySelector('.license .col-12.padding-top-half');
-    
-    if (aboutSection) {
-        // Show loading indicator
-        aboutSection.innerHTML = '<div class="text-center"><p>Loading license information...</p></div>';
+    // Check if we're on the license.html page
+    if (window.location.pathname.includes('license.html')) {
+        const aboutSection = document.querySelector('#license .col-12.padding-top-half');
         
-        // Function to dynamically load a script
-        function loadScript(url) {
-            return new Promise((resolve, reject) => {
-                const script = document.createElement('script');
-                script.src = url;
-                script.onload = resolve;
-                script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
-                document.head.appendChild(script);
-            });
+        if (aboutSection) {
+            // Show loading indicator
+            aboutSection.innerHTML = '<div class="text-center"><p>Loading license information...</p></div>';
+            
+            // Function to dynamically load a script
+            function loadScript(url) {
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = url;
+                    script.onload = resolve;
+                    script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
+                    document.head.appendChild(script);
+                });
+            }
+            
+            // First load the marked.js library, then process the LICENSE file
+            loadScript('https://cdn.jsdelivr.net/npm/marked/marked.min.js')
+                .then(() => {
+                    // Configure marked to customize headings
+                    const renderer = new marked.Renderer();
+                    
+                    // Override the heading renderer to use h5-h6 with heading class
+                    renderer.heading = function(text, level) {
+                        // Adjust level to start from h5
+                        const newLevel = Math.min(level + 4, 6); // h1 becomes h5, h2 becomes h6
+                        return `<h${newLevel} class="heading">${text}</h${newLevel}>`;
+                    };
+                    
+                    // Set renderer options
+                    marked.setOptions({
+                        renderer: renderer,
+                        gfm: true,
+                        breaks: true
+                    });
+                    
+                    return fetch('LICENSE');
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Could not load license file');
+                    }
+                    return response.text();
+                })
+                .then(markdown => {
+                    // Now marked is available to use with custom renderer
+                    const licenseHtml = marked.parse(markdown);
+                    aboutSection.innerHTML = `
+                        <div class="text">
+                            ${licenseHtml}
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    aboutSection.innerHTML = `
+                        <div class="alert alert-danger">
+                            <p>Error loading license information: ${error.message}</p>
+                            <p>Please visit <a href="LICENSE">the license file</a> directly.</p>
+                        </div>
+                    `;
+                    console.error('License loading error:', error);
+                });
         }
-        
-        // First load the marked.js library, then process the LICENSE file
-        loadScript('https://cdn.jsdelivr.net/npm/marked/marked.min.js')
-            .then(() => fetch('LICENSE'))
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Could not load license file');
-                }
-                return response.text();
-            })
-            .then(markdown => {
-                // Now marked is available to use
-                const licenseHtml = marked.parse(markdown);
-                aboutSection.innerHTML = `
-                    <div class="license-content">
-                        ${licenseHtml}
-                    </div>
-                `;
-            })
-            .catch(error => {
-                aboutSection.innerHTML = `
-                    <div class="alert alert-danger">
-                        <p>Error loading license information: ${error.message}</p>
-                        <p>Please visit <a href="LICENSE">the license file</a> directly.</p>
-                    </div>
-                `;
-                console.error('License loading error:', error);
-            });
     }
 });
 
