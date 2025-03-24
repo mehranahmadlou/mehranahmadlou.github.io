@@ -412,12 +412,8 @@ function initContactForm() {
 // Dynamic License Content Loading
 // ======================================
 
-// ======================================
-// Dynamic License Content Loading
-// ======================================
-
 document.addEventListener('DOMContentLoaded', function() {
-    const aboutSection = document.querySelector('#about .col-12.padding-top-half');
+    const aboutSection = document.querySelector('.license .col-12.padding-top-half');
     
     if (aboutSection) {
         // Show loading indicator
