@@ -438,11 +438,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Configure marked to customize headings
                     const renderer = new marked.Renderer();
                     
-                    // Override the heading renderer to use h5-h6 with heading class
                     renderer.heading = function(text, level) {
+                        // Make sure level is treated as a number
+                        const levelNum = parseInt(level) || 1;
                         // Adjust level to start from h5
-                        const newLevel = Math.min(level + 4, 6); // h1 becomes h5, h2 becomes h6
-                        return `<h${newLevel} class="heading">${text}</h${newLevel}>`;
+                        const newLevel = Math.min(levelNum + 4, 6); // h1 becomes h5, h2 becomes h6
+                        
+                        // Handle case where text is an object (newer versions of marked.js)
+                        let headingText = text;
+                        if (typeof text === 'object' && text !== null) {
+                            headingText = text.text || text.toString();
+                        }
+                        
+                        return `<h${newLevel} class="heading">${headingText}</h${newLevel}>`;
                     };
                     
                     // Set renderer options
@@ -468,6 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${licenseHtml}
                         </div>
                     `;
+                    console.log(licenseHtml);
                 })
                 .catch(error => {
                     aboutSection.innerHTML = `
@@ -479,6 +488,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error('License loading error:', error);
                 });
         }
+    } else {
+        console.error(`${window.location.pathname} is not the license page. License loading skipped.`);
     }
 });
 

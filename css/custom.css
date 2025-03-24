@@ -263,9 +263,21 @@ div .heading-area.about {
     font-size: 14px;
 }
 
+/* ------------------------------
+    7. License Section
+------------------------------ */
+#license h5 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+#license.text {
+    margin-left: 10em;
+}
 
 /* ------------------------------
-    7. Override core theme styles using the color palette
+    8. Override core theme styles using the color palette
 ------------------------------ */
 .heading{
     color: var(--primary);
