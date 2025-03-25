@@ -171,7 +171,7 @@ async function loadPublications() {
                         ${journalBadge}
                     </div>
                     <div class="publication-content">
-                        <h3 class="pub-title">${pub.title || 'A Publication'} by Mehran Ahmadlou</h3>
+                        <h3 class="pub-title">${pub.title || 'A Publication by Mehran Ahmadlou'}</h3>
                         <p class="pub-authors">${formatAuthors(pub.author)}</p>
                         
                         <div class="pub-actions align-items-center">
