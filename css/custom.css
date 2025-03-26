@@ -474,3 +474,18 @@ header .inner-header{
     border-color: var(--neutral-400) !important;
     box-shadow: 0 0 0 0.2rem var(--secondary-25) !important;
 }
+
+/* To fix issues */
+
+.owl-carousel .owl-stage {
+    -webkit-backface-visibility: hidden; /* Safari */
+    -moz-backface-visibility: hidden; /* Firefox */
+    backface-visibility: hidden; /* Standard syntax for all modern browsers */
+}
+
+html {
+    -webkit-text-size-adjust: 100%; /* For older browsers */
+    -moz-text-size-adjust: 100%; /* For older Firefox */
+    -ms-text-size-adjust: 100%; /* For older IE/Edge */
+    text-size-adjust: 100%; /* Standard syntax for modern browsers */
+}
